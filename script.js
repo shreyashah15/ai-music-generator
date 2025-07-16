@@ -22,10 +22,18 @@ async function generateMusic() {
       body: JSON.stringify({ data: [prompt, parseInt(duration)] })
     });
 
-    const resultJson = await response.json();
-    const audioUrl = resultJson.data[0];
+    const contentType = response.headers.get("content-type") || "";
+    const text = await response.text();
 
-    if (!audioUrl) throw new Error("No audio URL returned.");
+    if (!contentType.includes("application/json")) {
+      console.error("Non-JSON response:", text);
+      throw new Error("Server responded with an error. Please check the backend logs.");
+    }
+
+    const resultJson = JSON.parse(text);
+    const audioUrl = resultJson.data?.[0];
+
+    if (!audioUrl) throw new Error("No audio URL returned from the model.");
 
     const audioResponse = await fetch(audioUrl);
     const audioBlob = await audioResponse.blob();
