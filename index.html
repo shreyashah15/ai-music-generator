@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎵 AI Music Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🎵 AI Music Generator</h1>
+
+    <div class="input-section">
+      <div class="input-group">
+        <label for="prompt">Music Description:</label>
+        <textarea id="prompt" placeholder="e.g. Upbeat electronic dance music with synthesizers and a strong beat"></textarea>
+      </div>
+      <div class="input-group">
+        <label for="duration">Duration (seconds):</label>
+        <select id="duration">
+          <option value="10">10</option>
+          <option value="20" selected>20</option>
+          <option value="30">30</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="generate-btn" onclick="generateMusic()">Generate Music</button>
+
+    <div class="loading" id="loading">
+      <div class="loading-spinner"></div>
+      <p>Generating your music... please wait.</p>
+    </div>
+
+    <div class="result-section" id="result">
+      <h3>Generated Music:</h3>
+      <audio id="audioPlayer" class="audio-player" controls></audio>
+      <a href="#" id="downloadBtn" class="download-btn" download="generated_music.wav">Download Audio</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
