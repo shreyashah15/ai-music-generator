@@ -5,11 +5,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI Music Generator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>🎵 AI Music Generator</h1>
-  <p>This is a demo UI for generating music using Meta's MusicGen (via Hugging Face).</p>
-  <p><strong>Note:</strong> API token removed for public GitHub Pages hosting.</p>
-  <p>You can add your own token and deploy securely using a backend (e.g. Vercel or Render).</p>
+  <div class="container">
+    <h1>🎵 AI Music Generator</h1>
+    <p class="subtitle">Describe your music, and let AI compose it!</p>
+    <form id="musicForm">
+      <textarea id="prompt" placeholder="e.g., upbeat jazz with saxophone and drums" required></textarea>
+      <button type="submit">Generate Music</button>
+    </form>
+    <div id="loading" style="display:none;">Generating music...</div>
+    <div id="result" style="display:none;">
+      <h3>Your Generated Music</h3>
+      <audio id="audioPlayer" controls>Your browser does not support the audio element.</audio>
+    </div>
+    <div id="error" style="display:none; color: red;"></div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
